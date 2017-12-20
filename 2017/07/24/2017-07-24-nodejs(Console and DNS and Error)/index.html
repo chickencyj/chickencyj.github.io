@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+<title>
+  
+    Console DNS and Error
+  
+</title>
+
+<meta name="description" content="nodejs Console DNS and Error">
+<meta name="keywords" content="node">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Console DNS and Error">
+<meta property="og:url" content="http://ioopsd.cn/2017/07/24/2017-07-24-nodejs(Console and DNS and Error)/index.html">
+<meta property="og:site_name" content="Ioopsd">
+<meta property="og:description" content="nodejs Console DNS and Error">
+<meta property="og:updated_time" content="2017-12-20T12:47:36.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Console DNS and Error">
+<meta name="twitter:description" content="nodejs Console DNS and Error">
+
+
+  <link rel="alternative" href="/atom.xml" title="Ioopsd" type="application/atom+xml">
+
+
+
+  <link rel="icon" href="/favicon.png">
+
+
+<link rel="stylesheet" href="/perfect-scrollbar/css/perfect-scrollbar.min.css">
+<link rel="stylesheet" href="/styles/main.css">
+
+
+
+
+
+
+</head>
+<body
+  
+    class="monochrome"
+  
+  >
+  <div class="mobile-header">
+  <button class="sidebar-toggle" type="button">
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+  </button>
+  <a class="title" href="/">Ioopsd</a>
+</div>
+
+  <div class="main-container">
+    <div class="sidebar">
+    <img src="http://7xsn9b.com1.z0.glb.clouddn.com/p2020739931.webp" style="
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    ">
+  <div class="header">
+    
+    <div class="info">
+      <div class="content">
+        
+      </div>
+      
+        <div class="avatar">
+          
+            <a href="http://7xsn9b.com1.z0.glb.clouddn.com/p2412259139.webp"><img src="http://7xsn9b.com1.z0.glb.clouddn.com/p2412259139.webp"></a>
+          
+        </div>
+        <h1 class="title"><a href="/">Ioopsd</a></h1>
+      
+    </div>
+  </div>
+  <div class="body">
+    
+      
+        <ul class="nav">
+          
+            
+              <li>
+                <a href="https://github.com/chickencyj" >
+                  <img class="nav-img"  src="http://7xsn9b.com1.z0.glb.clouddn.com/GitHub-Mark-120px-plus.png">
+                </a>
+              </li>
+            
+          
+            
+              <li>
+                <a href="https://weibo.com/ioopsd" >
+                  <img class="nav-img"  src="http://7xsn9b.com1.z0.glb.clouddn.com/LOGO_64x64.png">
+                </a>
+              </li>
+            
+          
+            
+              <li>
+                <a href="https://music.163.com/#/user/home?id=53067068" >
+                  <img class="nav-img"  src="http://7xsn9b.com1.z0.glb.clouddn.com/yunMusic.png">
+                </a>
+              </li>
+            
+          
+        </ul>
+      
+    
+  </div>
+</div>
+
+    <div class="main-content">
+      
+        <div style="max-width: 1000px">
+      
+          <article id="post-2017-07-24-nodejs(Console and DNS and Error)" class="article article-type-post">
+  
+    <h1 class="article-header">
+      Console DNS and Error
+    </h1>
+  
+  
+
+  <div class="article-info">
+    <span class="article-date">
+  2017-07-24
+</span>
+
+    
+	<span class="article-category tagcloud">
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/blog/">blog</a></li></ul>
+	</span>
+
+
+    
+	<span class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/node/">node</a></li></ul>
+	</span>
+
+
+  </div>
+  <div class="article-entry">
+    <p>刚刚又看了下Console, DNS 和 Error, 遇到一些有趣的知识点，总结一下</p>
+<h3 id="Console"><a href="#Console" class="headerlink" title="Console"></a>Console</h3><ul>
+<li><p>nodejs默认情况下我们的console的输出会发送到 process.stdout 和 process.stderr，其实就是调用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">new Console(process.stdout, process.stderr)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>new Console 接受两个两个可写流参数(stdout <writable>， stderr <writable>)，cosnole.log输出到stdout，console.error输出到stderr。我们可以自定义console，通过传入不同的流把console写到不同的地方</writable></writable></p>
+</li>
+<li>console 是异步还是同步，根据不同的操作系统以及传入的不同的可写流参数来区分<ul>
+<li>Files: 在Windows and Linux 都是同步的</li>
+<li>TTYs (Terminals): Windows 异步, Unix 同步</li>
+<li>Pipes (and sockets): Windows 同步, Unix </li>
+</ul>
+</li>
+</ul>
+<h3 id="DNS"><a href="#DNS" class="headerlink" title="DNS"></a>DNS</h3><ul>
+<li>DNS模块有两种函数都是用来域名解析 dns.lookup(‘xxxx’, callback) [使用底层操作系统工具进行域名解析] 以及 dns.resolve4(‘xxx’, callback) 或者 dns.resolve(‘xxx’, ‘A’, callback) [连接到一个真实的 DNS 服务器进行域名解析]</li>
+<li>dns.lookup 会同步的调用getaddrinfo(3),这可能会阻塞libuv线程池中其它的操作， 而dns.resolve通过网络执行异步IO来域名解析，没有阻塞其它操作的风险</li>
+</ul>
+<h3 id="Error"><a href="#Error" class="headerlink" title="Error"></a>Error</h3><ul>
+<li>JavaScript 的 throw 机制的任何使用都会引起异常，异常必须使用 try / catch 处理，否则 Node.js 进程会立即退出。</li>
+<li>而try / catch 不能用于捕获由异步 API 引起的错误，因为当回调被调用时，try/catch 早已执行完被回收了。这种情况我们可以用process.on(‘uncaughtException’， callback)来监听和在callback处理没有被捕捉到的异常</li>
+</ul>
+
+  </div>
+  <footer class="article-footer">
+    
+  <div class="cc">
+    <a href="http://creativecommons.org/licenses/by-sa/4.0/deed.en" target="_blank" title="署名-相同方式共享">
+      <img src="/images/cc/cc.png">
+      
+          <img src="/images/cc/by.png">
+        
+          <img src="/images/cc/sa.png">
+      
+      <span>
+        本作品采用知识共享 署名-相同方式共享 4.0 国际许可协议进行许可。
+      </span>
+    </a>
+  </div>
+
+
+    
+
+  </footer>
+</article>
+
+
+
+
+
+
+
+          <div class="main-footer">
+  
+    © 2017 Ioopsd - Powered by <a href="http://hexo.io" target="_blank">Hexo</a>
+  
+</div>
+
+      
+        </div>
+      
+    </div>
+  </div>
+  <script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+
+  <link rel="stylesheet" href="/PhotoSwipe/photoswipe.css">
+  <link rel="stylesheet" href="/PhotoSwipe/default-skin/default-skin.css">
+
+  <!-- Root element of PhotoSwipe. Must have class pswp. -->
+  <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe.
+             It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+      <!-- Container that holds slides.
+                PhotoSwipe keeps only 3 of them in the DOM to save memory.
+                Don't modify these 3 pswp__item elements, data is added later on. -->
+      <div class="pswp__container">
+        <div class="pswp__item"></div>
+        <div class="pswp__item"></div>
+        <div class="pswp__item"></div>
+      </div>
+
+      <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+      <div class="pswp__ui pswp__ui--hidden">
+
+        <div class="pswp__top-bar">
+
+          <!--  Controls are self-explanatory. Order can be changed. -->
+
+          <div class="pswp__counter"></div>
+
+          <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+          <button class="pswp__button pswp__button--share" title="Share"></button>
+
+          <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+          <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+          <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+          <!-- element will get class pswp__preloader--active when preloader is running -->
+          <div class="pswp__preloader">
+            <div class="pswp__preloader__icn">
+              <div class="pswp__preloader__cut">
+                <div class="pswp__preloader__donut"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+          <div class="pswp__share-tooltip"></div>
+        </div>
+
+        <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+
+        <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+
+        <div class="pswp__caption">
+          <div class="pswp__caption__center"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/PhotoSwipe/photoswipe.js"></script>
+  <script src="/PhotoSwipe/photoswipe-ui-default.js"></script>
+
+
+<script src="/perfect-scrollbar/js/min/perfect-scrollbar.min.js"></script>
+<script src="/scripts/main.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+<title>
+  
+    v8的handles,scopes和contexts
+  
+</title>
+
+<meta name="description" content="handles,scopes和contexts">
+<meta name="keywords" content="V8">
+<meta property="og:type" content="article">
+<meta property="og:title" content="v8的handles,scopes和contexts">
+<meta property="og:url" content="http://ioopsd.cn/2017/03/26/2017-03-26-V8(handles,scopes and contexts)/index.html">
+<meta property="og:site_name" content="Ioopsd">
+<meta property="og:description" content="handles,scopes和contexts">
+<meta property="og:updated_time" content="2017-12-20T12:47:36.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="v8的handles,scopes和contexts">
+<meta name="twitter:description" content="handles,scopes和contexts">
+
+
+  <link rel="alternative" href="/atom.xml" title="Ioopsd" type="application/atom+xml">
+
+
+
+  <link rel="icon" href="/favicon.png">
+
+
+<link rel="stylesheet" href="/perfect-scrollbar/css/perfect-scrollbar.min.css">
+<link rel="stylesheet" href="/styles/main.css">
+
+
+
+
+
+
+</head>
+<body
+  
+    class="monochrome"
+  
+  >
+  <div class="mobile-header">
+  <button class="sidebar-toggle" type="button">
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+  </button>
+  <a class="title" href="/">Ioopsd</a>
+</div>
+
+  <div class="main-container">
+    <div class="sidebar">
+    <img src="http://7xsn9b.com1.z0.glb.clouddn.com/p2020739931.webp" style="
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    ">
+  <div class="header">
+    
+    <div class="info">
+      <div class="content">
+        
+      </div>
+      
+        <div class="avatar">
+          
+            <a href="http://7xsn9b.com1.z0.glb.clouddn.com/p2412259139.webp"><img src="http://7xsn9b.com1.z0.glb.clouddn.com/p2412259139.webp"></a>
+          
+        </div>
+        <h1 class="title"><a href="/">Ioopsd</a></h1>
+      
+    </div>
+  </div>
+  <div class="body">
+    
+      
+        <ul class="nav">
+          
+            
+              <li>
+                <a href="https://github.com/chickencyj" >
+                  <img class="nav-img"  src="http://7xsn9b.com1.z0.glb.clouddn.com/GitHub-Mark-120px-plus.png">
+                </a>
+              </li>
+            
+          
+            
+              <li>
+                <a href="https://weibo.com/ioopsd" >
+                  <img class="nav-img"  src="http://7xsn9b.com1.z0.glb.clouddn.com/LOGO_64x64.png">
+                </a>
+              </li>
+            
+          
+            
+              <li>
+                <a href="https://music.163.com/#/user/home?id=53067068" >
+                  <img class="nav-img"  src="http://7xsn9b.com1.z0.glb.clouddn.com/yunMusic.png">
+                </a>
+              </li>
+            
+          
+        </ul>
+      
+    
+  </div>
+</div>
+
+    <div class="main-content">
+      
+        <div style="max-width: 1000px">
+      
+          <article id="post-2017-03-26-V8(handles,scopes and contexts)" class="article article-type-post">
+  
+    <h1 class="article-header">
+      v8的handles,scopes和contexts
+    </h1>
+  
+  
+
+  <div class="article-info">
+    <span class="article-date">
+  2017-03-26
+</span>
+
+    
+	<span class="article-category tagcloud">
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/blog/">blog</a></li></ul>
+	</span>
+
+
+    
+	<span class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/V8/">V8</a></li></ul>
+	</span>
+
+
+  </div>
+  <div class="article-entry">
+    <h3 id="关于引用的疑问？"><a href="#关于引用的疑问？" class="headerlink" title="关于引用的疑问？"></a>关于引用的疑问？</h3><p>从学习js以来，就知道ECMAScript变量包含两种不同类型的值：基本类型值、引用类型值。基本类型保存在栈中，引用类型保存在堆中。基本类型可以按值访问，而引用类型则是按引用访问。而按引用访问是类似指针的方式在栈中先找到内存地址，再去读取保存在堆中的值。但对引用的了解仅限于此，一直不明白具体的引用指的是什么。这几天翻了一下v8的wiki了解到了引用具体指什么。</p>
+<h3 id="Handles-and-Handle-Scope"><a href="#Handles-and-Handle-Scope" class="headerlink" title="Handles and Handle Scope"></a>Handles and Handle Scope</h3><p>handle 是什么？从广义上，能够从一个数值拎起一大堆数据的东西都可以叫做handle。在v8中，Handle提供了一个JS对象在堆内存中的地址的引用，而v8中的GC则通过管理handle的方式去跟踪管理JS对象。当一个对象已经无法从根节点访问到，GC将会回收它。而在回收过程中，GC会将对象在堆内存中进行移动。同时也会将所有相应的handle更新为新的地址。</p>
+<ul>
+<li><p>Local Handles 保存在栈中，其生命周期取决于handle scope，当一个handle scope被销毁时,当中所有的handle也被销毁，而这些handle所引用的的对象将在下次GC的时候将被进行适当的处理。</p>
+</li>
+<li><p>Persistent handle 不受handle Scope 管理，类似于全局，可以延伸到不同函数</p>
+</li>
+<li><p>Eternal 是一个用于预期永远不会被释放的javaScript对象的persistent handle, 使用它的代价更小, 因为它减轻了垃圾回收器判定对象是否存活的负担.</p>
+</li>
+</ul>
+<h3 id="Contexts"><a href="#Contexts" class="headerlink" title="Contexts"></a>Contexts</h3><p>在 V8 中,context使得可以在一个V8实例中运行相互隔离且无关的javaScript代码,javaScript代码必须运行在context中.当你创建一个 context 后, 你可以进出此上下文任意多的次数. 当你在 context A 中时, 还可以再进入 context B. 此时你将进入 B 的上下文中. 当退出 B 时, A 又将成为你的当前 context.</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">// Create a new context.</span><br><span class="line">Local&lt;Context&gt; context = Context::New(isolate);</span><br><span class="line">// Enter the context <span class="keyword">for</span> compiling and running the hello world script.</span><br><span class="line">Context::Scope context_scope(context);</span><br><span class="line">// Create a string containing the JavaScript <span class="built_in">source</span> code.</span><br><span class="line">Local&lt;String&gt; <span class="built_in">source</span> =</span><br><span class="line">String::NewFromUtf8(isolate, <span class="string">"'Hello' + ', World!'"</span>,</span><br><span class="line">NewStringType::kNormal).ToLocalChecked();</span><br><span class="line">// Compile the <span class="built_in">source</span> code.</span><br><span class="line">Local&lt;Script&gt; script = Script::Compile(context, <span class="built_in">source</span>).ToLocalChecked();</span><br></pre></td></tr></table></figure>
+
+  </div>
+  <footer class="article-footer">
+    
+  <div class="cc">
+    <a href="http://creativecommons.org/licenses/by-sa/4.0/deed.en" target="_blank" title="署名-相同方式共享">
+      <img src="/images/cc/cc.png">
+      
+          <img src="/images/cc/by.png">
+        
+          <img src="/images/cc/sa.png">
+      
+      <span>
+        本作品采用知识共享 署名-相同方式共享 4.0 国际许可协议进行许可。
+      </span>
+    </a>
+  </div>
+
+
+    
+
+  </footer>
+</article>
+
+
+
+
+
+
+
+          <div class="main-footer">
+  
+    © 2017 Ioopsd - Powered by <a href="http://hexo.io" target="_blank">Hexo</a>
+  
+</div>
+
+      
+        </div>
+      
+    </div>
+  </div>
+  <script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+
+  <link rel="stylesheet" href="/PhotoSwipe/photoswipe.css">
+  <link rel="stylesheet" href="/PhotoSwipe/default-skin/default-skin.css">
+
+  <!-- Root element of PhotoSwipe. Must have class pswp. -->
+  <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe.
+             It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+      <!-- Container that holds slides.
+                PhotoSwipe keeps only 3 of them in the DOM to save memory.
+                Don't modify these 3 pswp__item elements, data is added later on. -->
+      <div class="pswp__container">
+        <div class="pswp__item"></div>
+        <div class="pswp__item"></div>
+        <div class="pswp__item"></div>
+      </div>
+
+      <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+      <div class="pswp__ui pswp__ui--hidden">
+
+        <div class="pswp__top-bar">
+
+          <!--  Controls are self-explanatory. Order can be changed. -->
+
+          <div class="pswp__counter"></div>
+
+          <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+          <button class="pswp__button pswp__button--share" title="Share"></button>
+
+          <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+          <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+          <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+          <!-- element will get class pswp__preloader--active when preloader is running -->
+          <div class="pswp__preloader">
+            <div class="pswp__preloader__icn">
+              <div class="pswp__preloader__cut">
+                <div class="pswp__preloader__donut"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+          <div class="pswp__share-tooltip"></div>
+        </div>
+
+        <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+
+        <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+
+        <div class="pswp__caption">
+          <div class="pswp__caption__center"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/PhotoSwipe/photoswipe.js"></script>
+  <script src="/PhotoSwipe/photoswipe-ui-default.js"></script>
+
+
+<script src="/perfect-scrollbar/js/min/perfect-scrollbar.min.js"></script>
+<script src="/scripts/main.js"></script>
+
+</body>
+</html>

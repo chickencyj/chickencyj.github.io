@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+<title>
+  
+    标签: DOM
+  
+</title>
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Ioopsd">
+<meta property="og:url" content="http://ioopsd.cn/tags/DOM/index.html">
+<meta property="og:site_name" content="Ioopsd">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Ioopsd">
+
+
+  <link rel="alternative" href="/atom.xml" title="Ioopsd" type="application/atom+xml">
+
+
+
+  <link rel="icon" href="/favicon.png">
+
+
+<link rel="stylesheet" href="/perfect-scrollbar/css/perfect-scrollbar.min.css">
+<link rel="stylesheet" href="/styles/main.css">
+
+
+
+
+
+
+</head>
+<body
+  
+    class="monochrome"
+  
+  >
+  <div class="mobile-header">
+  <button class="sidebar-toggle" type="button">
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+  </button>
+  <a class="title" href="/">Ioopsd</a>
+</div>
+
+  <div class="main-container">
+    <div class="sidebar">
+    <img src="http://7xsn9b.com1.z0.glb.clouddn.com/p2020739931.webp" style="
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    ">
+  <div class="header">
+    
+    <div class="info">
+      <div class="content">
+        
+      </div>
+      
+        <div class="avatar">
+          
+            <a href="http://7xsn9b.com1.z0.glb.clouddn.com/p2412259139.webp"><img src="http://7xsn9b.com1.z0.glb.clouddn.com/p2412259139.webp"></a>
+          
+        </div>
+        <h1 class="title"><a href="/">Ioopsd</a></h1>
+      
+    </div>
+  </div>
+  <div class="body">
+    
+      
+        <ul class="nav">
+          
+            
+              <li>
+                <a href="https://github.com/chickencyj" >
+                  <img class="nav-img"  src="http://7xsn9b.com1.z0.glb.clouddn.com/GitHub-Mark-120px-plus.png">
+                </a>
+              </li>
+            
+          
+            
+              <li>
+                <a href="https://weibo.com/ioopsd" >
+                  <img class="nav-img"  src="http://7xsn9b.com1.z0.glb.clouddn.com/LOGO_64x64.png">
+                </a>
+              </li>
+            
+          
+            
+              <li>
+                <a href="https://music.163.com/#/user/home?id=53067068" >
+                  <img class="nav-img"  src="http://7xsn9b.com1.z0.glb.clouddn.com/yunMusic.png">
+                </a>
+              </li>
+            
+          
+        </ul>
+      
+    
+  </div>
+</div>
+
+    <div class="main-content">
+      
+        <div style="max-width: 1000px">
+      
+          <h1>DOM</h1>
+
+
+  
+  
+    <div class="post-list">
+  
+
+    <div class="post-list-item article">
+      <h3 class="article-header">
+        <a href="/2016/04/11/2016-04-11-DOM(Note)/" >
+  DOM加载(javascript精通笔记)
+</a>
+
+      </h3>
+      
+
+      <div class="article-info">
+        <a href="/2016/04/11/2016-04-11-DOM(Note)/"><span class="article-date">
+  2016-04-11
+</span>
+</a>
+        
+	<span class="article-category tagcloud">
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/blog/">blog</a></li></ul>
+	</span>
+
+
+        
+	<span class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DOM/">DOM</a></li></ul>
+	</span>
+
+
+      </div>
+      <div class="article-entry">
+        
+          <h2 id="浏览器渲染和操作顺序大致如下"><a href="#浏览器渲染和操作顺序大致如下" class="headerlink" title="浏览器渲染和操作顺序大致如下:"></a>浏览器渲染和操作顺序大致如下:</h2><ul>
+<li>HTML解析完毕</li>
+<li>外部脚本和样式加载完毕</li>
+<li>脚本在文档中解析并执行</li>
+<li>HTML DOM完全构造起来</li>
+<li>图片和外部内容加载</li>
+<li>网页完成加载</li>
+</ul>
+<p>由于JavaScript可以在DOM加载完成之前执行，因此要使用JavaScript操作DOM的话得等待整个页面加载完成再执行，我们常用的两个方法是</p>
+<ul>
+<li>使用window.onload,即window的load时间来绑定你需要执行的函数</li>
+<li>在HTMLDOM最后插入你需要执行的JavaScript</li>
+</ul>
+<p>第一种方法在页面的加载完毕完全被最后一步决定，，如果你页面有很多图片、视频等，得将这些全部加载完JavaScript才执行，这样就比较慢了。</p>
+<p>第二种方法的缺点在于太过于混乱：你为HTML增添无关标记的仅仅是为了检测DOM是否执行，这为页面增加了额外代码.</p>
+<ul>
+<li>下面来说说第三种方法：<h2 id="通过判断DOM何时加载完毕来解决这个问题"><a href="#通过判断DOM何时加载完毕来解决这个问题" class="headerlink" title="通过判断DOM何时加载完毕来解决这个问题"></a>通过判断DOM何时加载完毕来解决这个问题</h2></li>
+</ul>
+<h2 id="要点："><a href="#要点：" class="headerlink" title="要点："></a>要点：</h2><ul>
+<li>document，你需要知道DOM文档是否已经加载</li>
+<li>document.getElementsByTagName和documents.getElementById:频繁使用这两个函数检查文档，当存在这些函数则表明已加载完成</li>
+<li>document.body,检查body元素是否已经完全加载</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> domReady(f)</span><br><span class="line">&#123;	//如果DOM已经加载，马上执行函数</span><br><span class="line">	<span class="keyword">if</span> (domReady.done)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">return</span> f();</span><br><span class="line">		&#125;</span><br><span class="line">	//如果DOM没有加载,如果我们增加了一个函数</span><br><span class="line">	<span class="keyword">if</span> (domReady.timer) </span><br><span class="line">		&#123;</span><br><span class="line">			//把它加入到待执行函数数组中</span><br><span class="line">			domReady.ready.push(f);</span><br><span class="line">		&#125;</span><br><span class="line">		//否则</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			//为页面加载完毕绑定一个事件,防止它率先完成</span><br><span class="line">			addEvent(window,<span class="string">"load"</span>,isDOMReady);</span><br><span class="line">			//初始化待执行函数的数组</span><br><span class="line">			domReady.ready = [f];</span><br><span class="line">			//调用定时器尽可能快的检查DOM是否可用</span><br><span class="line">			domReady.timer = setInterval(isDOMReady,13);</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">		//检查DOM是否可操作</span><br><span class="line">		<span class="keyword">function</span> isDOMReady()</span><br><span class="line">		&#123;</span><br><span class="line">			//如果DOM已经可用,返回</span><br><span class="line">			<span class="keyword">if</span> (domReady.done) </span><br><span class="line">				&#123;</span><br><span class="line">					<span class="built_in">return</span> <span class="literal">false</span>;</span><br><span class="line">				&#125;</span><br><span class="line">			//检查函数与元素是否可用</span><br><span class="line">			<span class="keyword">if</span>(document &amp;&amp; document.getElementsByTagName &amp;&amp; document.getElementById &amp;&amp; document.body)</span><br><span class="line">			&#123;</span><br><span class="line">				//如果可用，停止检查</span><br><span class="line">				clearInterval(domReady.timer);</span><br><span class="line">				domReady.timer = null;</span><br><span class="line">				//执行所有待执行的函数</span><br><span class="line">				<span class="keyword">for</span> (var i = 0; i &lt; domReady.ready.length; i++) </span><br><span class="line">				&#123;</span><br><span class="line">					domReady.ready[i]();</span><br><span class="line">					</span><br><span class="line">					//记录</span><br><span class="line">					domReady.ready = null;</span><br><span class="line">					domReady.done = <span class="literal">true</span>;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">		&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>由此可见，第三种代码是跳过了图片和外部内容加载与网页完成加载<br>现在再列出浏览器渲染和操作顺序:</p>
+<ul>
+<li>HTML解析完毕</li>
+<li>外部脚本和样式加载完毕</li>
+<li>脚本在文档中解析并执行</li>
+<li>HTML DOM完全构造起来(domready)</li>
+<li>图片和外部内容加载</li>
+<li>网页完成加载(window.onload)</li>
+</ul>
+
+        
+      </div>
+    </div>
+
+  
+    </div>
+  
+
+
+
+
+
+
+          <div class="main-footer">
+  
+    © 2017 Ioopsd - Powered by <a href="http://hexo.io" target="_blank">Hexo</a>
+  
+</div>
+
+      
+        </div>
+      
+    </div>
+  </div>
+  <script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+
+  <link rel="stylesheet" href="/PhotoSwipe/photoswipe.css">
+  <link rel="stylesheet" href="/PhotoSwipe/default-skin/default-skin.css">
+
+  <!-- Root element of PhotoSwipe. Must have class pswp. -->
+  <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe.
+             It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+      <!-- Container that holds slides.
+                PhotoSwipe keeps only 3 of them in the DOM to save memory.
+                Don't modify these 3 pswp__item elements, data is added later on. -->
+      <div class="pswp__container">
+        <div class="pswp__item"></div>
+        <div class="pswp__item"></div>
+        <div class="pswp__item"></div>
+      </div>
+
+      <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+      <div class="pswp__ui pswp__ui--hidden">
+
+        <div class="pswp__top-bar">
+
+          <!--  Controls are self-explanatory. Order can be changed. -->
+
+          <div class="pswp__counter"></div>
+
+          <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+          <button class="pswp__button pswp__button--share" title="Share"></button>
+
+          <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+          <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+          <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+          <!-- element will get class pswp__preloader--active when preloader is running -->
+          <div class="pswp__preloader">
+            <div class="pswp__preloader__icn">
+              <div class="pswp__preloader__cut">
+                <div class="pswp__preloader__donut"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+          <div class="pswp__share-tooltip"></div>
+        </div>
+
+        <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+
+        <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+
+        <div class="pswp__caption">
+          <div class="pswp__caption__center"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/PhotoSwipe/photoswipe.js"></script>
+  <script src="/PhotoSwipe/photoswipe-ui-default.js"></script>
+
+
+<script src="/perfect-scrollbar/js/min/perfect-scrollbar.min.js"></script>
+<script src="/scripts/main.js"></script>
+
+</body>
+</html>

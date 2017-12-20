@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+<title>
+  
+    标签: 执行上下文
+  
+</title>
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Ioopsd">
+<meta property="og:url" content="http://ioopsd.cn/tags/执行上下文/index.html">
+<meta property="og:site_name" content="Ioopsd">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Ioopsd">
+
+
+  <link rel="alternative" href="/atom.xml" title="Ioopsd" type="application/atom+xml">
+
+
+
+  <link rel="icon" href="/favicon.png">
+
+
+<link rel="stylesheet" href="/perfect-scrollbar/css/perfect-scrollbar.min.css">
+<link rel="stylesheet" href="/styles/main.css">
+
+
+
+
+
+
+</head>
+<body
+  
+    class="monochrome"
+  
+  >
+  <div class="mobile-header">
+  <button class="sidebar-toggle" type="button">
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+  </button>
+  <a class="title" href="/">Ioopsd</a>
+</div>
+
+  <div class="main-container">
+    <div class="sidebar">
+    <img src="http://7xsn9b.com1.z0.glb.clouddn.com/p2020739931.webp" style="
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    ">
+  <div class="header">
+    
+    <div class="info">
+      <div class="content">
+        
+      </div>
+      
+        <div class="avatar">
+          
+            <a href="http://7xsn9b.com1.z0.glb.clouddn.com/p2412259139.webp"><img src="http://7xsn9b.com1.z0.glb.clouddn.com/p2412259139.webp"></a>
+          
+        </div>
+        <h1 class="title"><a href="/">Ioopsd</a></h1>
+      
+    </div>
+  </div>
+  <div class="body">
+    
+      
+        <ul class="nav">
+          
+            
+              <li>
+                <a href="https://github.com/chickencyj" >
+                  <img class="nav-img"  src="http://7xsn9b.com1.z0.glb.clouddn.com/GitHub-Mark-120px-plus.png">
+                </a>
+              </li>
+            
+          
+            
+              <li>
+                <a href="https://weibo.com/ioopsd" >
+                  <img class="nav-img"  src="http://7xsn9b.com1.z0.glb.clouddn.com/LOGO_64x64.png">
+                </a>
+              </li>
+            
+          
+            
+              <li>
+                <a href="https://music.163.com/#/user/home?id=53067068" >
+                  <img class="nav-img"  src="http://7xsn9b.com1.z0.glb.clouddn.com/yunMusic.png">
+                </a>
+              </li>
+            
+          
+        </ul>
+      
+    
+  </div>
+</div>
+
+    <div class="main-content">
+      
+        <div style="max-width: 1000px">
+      
+          <h1>执行上下文</h1>
+
+
+  
+  
+    <div class="post-list">
+  
+
+    <div class="post-list-item article">
+      <h3 class="article-header">
+        <a href="/2016/04/11/2016-04-11-prepare/" >
+  预解析
+</a>
+
+      </h3>
+      
+
+      <div class="article-info">
+        <a href="/2016/04/11/2016-04-11-prepare/"><span class="article-date">
+  2016-04-11
+</span>
+</a>
+        
+	<span class="article-category tagcloud">
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/blog/">blog</a></li></ul>
+	</span>
+
+
+        
+	<span class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/执行上下文/">执行上下文</a></li></ul>
+	</span>
+
+
+      </div>
+      <div class="article-entry">
+        
+          <p>今天遇到一个坑，就是变量声明预解析与函数声明与解析的优先顺序，一开始我以为是声明顺序决定，结果发现并不是这样，下面看代码</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">console.log(a);</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">a</span></span>()&#123;&#125;</span><br><span class="line"></span><br><span class="line">var a = 10;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">console.log(a);</span><br><span class="line"></span><br><span class="line">var a = 10;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">a</span></span>()&#123;&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="你会发现两个在控制台都是输出function-a-，excuse-me？"><a href="#你会发现两个在控制台都是输出function-a-，excuse-me？" class="headerlink" title="你会发现两个在控制台都是输出function a(){}，excuse me？"></a>你会发现两个在控制台都是输出function a(){}，excuse me？</h5><ul>
+<li>这是由于变量的预解析先于函数的预解析,所以无论顺序如何，变量先声明还是函数后声明，变量声明都会被函数声明覆盖，所以出现上面的情况</li>
+</ul>
+
+        
+      </div>
+    </div>
+
+  
+    </div>
+  
+
+
+
+
+
+
+          <div class="main-footer">
+  
+    © 2017 Ioopsd - Powered by <a href="http://hexo.io" target="_blank">Hexo</a>
+  
+</div>
+
+      
+        </div>
+      
+    </div>
+  </div>
+  <script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+
+  <link rel="stylesheet" href="/PhotoSwipe/photoswipe.css">
+  <link rel="stylesheet" href="/PhotoSwipe/default-skin/default-skin.css">
+
+  <!-- Root element of PhotoSwipe. Must have class pswp. -->
+  <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe.
+             It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+      <!-- Container that holds slides.
+                PhotoSwipe keeps only 3 of them in the DOM to save memory.
+                Don't modify these 3 pswp__item elements, data is added later on. -->
+      <div class="pswp__container">
+        <div class="pswp__item"></div>
+        <div class="pswp__item"></div>
+        <div class="pswp__item"></div>
+      </div>
+
+      <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+      <div class="pswp__ui pswp__ui--hidden">
+
+        <div class="pswp__top-bar">
+
+          <!--  Controls are self-explanatory. Order can be changed. -->
+
+          <div class="pswp__counter"></div>
+
+          <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+          <button class="pswp__button pswp__button--share" title="Share"></button>
+
+          <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+          <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+          <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+          <!-- element will get class pswp__preloader--active when preloader is running -->
+          <div class="pswp__preloader">
+            <div class="pswp__preloader__icn">
+              <div class="pswp__preloader__cut">
+                <div class="pswp__preloader__donut"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+          <div class="pswp__share-tooltip"></div>
+        </div>
+
+        <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+
+        <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+
+        <div class="pswp__caption">
+          <div class="pswp__caption__center"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/PhotoSwipe/photoswipe.js"></script>
+  <script src="/PhotoSwipe/photoswipe-ui-default.js"></script>
+
+
+<script src="/perfect-scrollbar/js/min/perfect-scrollbar.min.js"></script>
+<script src="/scripts/main.js"></script>
+
+</body>
+</html>

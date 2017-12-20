@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+<title>
+  
+    安全工厂方法模式
+  
+</title>
+
+<meta name="description" content="设计模式">
+<meta name="keywords" content="OOP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="安全工厂方法模式">
+<meta property="og:url" content="http://ioopsd.cn/2016/05/27/2016-05-27-Factory2/index.html">
+<meta property="og:site_name" content="Ioopsd">
+<meta property="og:description" content="设计模式">
+<meta property="og:updated_time" content="2017-12-20T12:47:36.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="安全工厂方法模式">
+<meta name="twitter:description" content="设计模式">
+
+
+  <link rel="alternative" href="/atom.xml" title="Ioopsd" type="application/atom+xml">
+
+
+
+  <link rel="icon" href="/favicon.png">
+
+
+<link rel="stylesheet" href="/perfect-scrollbar/css/perfect-scrollbar.min.css">
+<link rel="stylesheet" href="/styles/main.css">
+
+
+
+
+
+
+</head>
+<body
+  
+    class="monochrome"
+  
+  >
+  <div class="mobile-header">
+  <button class="sidebar-toggle" type="button">
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+  </button>
+  <a class="title" href="/">Ioopsd</a>
+</div>
+
+  <div class="main-container">
+    <div class="sidebar">
+    <img src="http://7xsn9b.com1.z0.glb.clouddn.com/p2020739931.webp" style="
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    ">
+  <div class="header">
+    
+    <div class="info">
+      <div class="content">
+        
+      </div>
+      
+        <div class="avatar">
+          
+            <a href="http://7xsn9b.com1.z0.glb.clouddn.com/p2412259139.webp"><img src="http://7xsn9b.com1.z0.glb.clouddn.com/p2412259139.webp"></a>
+          
+        </div>
+        <h1 class="title"><a href="/">Ioopsd</a></h1>
+      
+    </div>
+  </div>
+  <div class="body">
+    
+      
+        <ul class="nav">
+          
+            
+              <li>
+                <a href="https://github.com/chickencyj" >
+                  <img class="nav-img"  src="http://7xsn9b.com1.z0.glb.clouddn.com/GitHub-Mark-120px-plus.png">
+                </a>
+              </li>
+            
+          
+            
+              <li>
+                <a href="https://weibo.com/ioopsd" >
+                  <img class="nav-img"  src="http://7xsn9b.com1.z0.glb.clouddn.com/LOGO_64x64.png">
+                </a>
+              </li>
+            
+          
+            
+              <li>
+                <a href="https://music.163.com/#/user/home?id=53067068" >
+                  <img class="nav-img"  src="http://7xsn9b.com1.z0.glb.clouddn.com/yunMusic.png">
+                </a>
+              </li>
+            
+          
+        </ul>
+      
+    
+  </div>
+</div>
+
+    <div class="main-content">
+      
+        <div style="max-width: 1000px">
+      
+          <article id="post-2016-05-27-Factory2" class="article article-type-post">
+  
+    <h1 class="article-header">
+      安全工厂方法模式
+    </h1>
+  
+  
+
+  <div class="article-info">
+    <span class="article-date">
+  2016-05-27
+</span>
+
+    
+	<span class="article-category tagcloud">
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/blog/">blog</a></li></ul>
+	</span>
+
+
+    
+	<span class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OOP/">OOP</a></li></ul>
+	</span>
+
+
+  </div>
+  <div class="article-entry">
+    <h1 id="安全工厂方法模式"><a href="#安全工厂方法模式" class="headerlink" title="安全工厂方法模式"></a>安全工厂方法模式</h1><ul>
+<li>将实际创建对象工作推迟到子类当中。这样核心类就成了抽象类</li>
+<li>同时为了避免在实例化的时候忘记通过new关键字来创建的话，还要考虑this的指向问题</li>
+<li>主要用于创建多类对象</li>
+<li>这种方式也避免了使用者与对象类之间的耦合，使用者不必关心是什么类，只需调用工厂方法即可</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">var Factory = <span class="keyword">function</span>(<span class="built_in">type</span>,content)&#123;</span><br><span class="line">	<span class="keyword">if</span> (this instanceof Factory) &#123;</span><br><span class="line">		<span class="built_in">return</span> new this[<span class="built_in">type</span>](content);</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="built_in">return</span> new Factory(<span class="built_in">type</span>,content);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Factory.prototype = &#123;</span><br><span class="line">	constructor : Factory,</span><br><span class="line">	CloseBtn: <span class="keyword">function</span>(content)&#123;&#125;,</span><br><span class="line">	SureBtn: <span class="keyword">function</span>(content)&#123;&#125;,</span><br><span class="line">	CancleBtn: <span class="keyword">function</span>(content)&#123;</span><br><span class="line">		this.content = content;</span><br><span class="line">		!<span class="keyword">function</span>(content)&#123;</span><br><span class="line">			var btn = document.createElement(<span class="string">'button'</span>);</span><br><span class="line">			btn.innerHTML = content;</span><br><span class="line">			btn.className = <span class="string">'CancleBtn'</span>;</span><br><span class="line">			document.getElementById(<span class="string">'container'</span>).appendChild(btn);</span><br><span class="line">		&#125;(content);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var date = [</span><br><span class="line">	&#123;<span class="built_in">type</span>:<span class="string">'CloseBtn'</span>,content:<span class="string">'关闭'</span>&#125;,</span><br><span class="line">	&#123;<span class="built_in">type</span>:<span class="string">'SureBtn'</span>,content:<span class="string">'确定'</span>&#125;,</span><br><span class="line">	&#123;<span class="built_in">type</span>:<span class="string">'CancleBtn'</span>,content:<span class="string">'取消'</span>&#125;</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (var i = 0; i &lt; date.length; i++) &#123;</span><br><span class="line">	Factory(date[i].<span class="built_in">type</span>,date[i].content);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+  </div>
+  <footer class="article-footer">
+    
+  <div class="cc">
+    <a href="http://creativecommons.org/licenses/by-sa/4.0/deed.en" target="_blank" title="署名-相同方式共享">
+      <img src="/images/cc/cc.png">
+      
+          <img src="/images/cc/by.png">
+        
+          <img src="/images/cc/sa.png">
+      
+      <span>
+        本作品采用知识共享 署名-相同方式共享 4.0 国际许可协议进行许可。
+      </span>
+    </a>
+  </div>
+
+
+    
+
+  </footer>
+</article>
+
+
+
+
+
+
+
+          <div class="main-footer">
+  
+    © 2017 Ioopsd - Powered by <a href="http://hexo.io" target="_blank">Hexo</a>
+  
+</div>
+
+      
+        </div>
+      
+    </div>
+  </div>
+  <script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+
+  <link rel="stylesheet" href="/PhotoSwipe/photoswipe.css">
+  <link rel="stylesheet" href="/PhotoSwipe/default-skin/default-skin.css">
+
+  <!-- Root element of PhotoSwipe. Must have class pswp. -->
+  <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe.
+             It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+      <!-- Container that holds slides.
+                PhotoSwipe keeps only 3 of them in the DOM to save memory.
+                Don't modify these 3 pswp__item elements, data is added later on. -->
+      <div class="pswp__container">
+        <div class="pswp__item"></div>
+        <div class="pswp__item"></div>
+        <div class="pswp__item"></div>
+      </div>
+
+      <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+      <div class="pswp__ui pswp__ui--hidden">
+
+        <div class="pswp__top-bar">
+
+          <!--  Controls are self-explanatory. Order can be changed. -->
+
+          <div class="pswp__counter"></div>
+
+          <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+          <button class="pswp__button pswp__button--share" title="Share"></button>
+
+          <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+          <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+          <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+          <!-- element will get class pswp__preloader--active when preloader is running -->
+          <div class="pswp__preloader">
+            <div class="pswp__preloader__icn">
+              <div class="pswp__preloader__cut">
+                <div class="pswp__preloader__donut"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+          <div class="pswp__share-tooltip"></div>
+        </div>
+
+        <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+
+        <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+
+        <div class="pswp__caption">
+          <div class="pswp__caption__center"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/PhotoSwipe/photoswipe.js"></script>
+  <script src="/PhotoSwipe/photoswipe-ui-default.js"></script>
+
+
+<script src="/perfect-scrollbar/js/min/perfect-scrollbar.min.js"></script>
+<script src="/scripts/main.js"></script>
+
+</body>
+</html>

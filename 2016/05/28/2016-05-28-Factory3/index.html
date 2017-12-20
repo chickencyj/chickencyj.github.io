@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+<title>
+  
+    抽象工厂模式
+  
+</title>
+
+<meta name="description" content="设计模式">
+<meta name="keywords" content="OOP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="抽象工厂模式">
+<meta property="og:url" content="http://ioopsd.cn/2016/05/28/2016-05-28-Factory3/index.html">
+<meta property="og:site_name" content="Ioopsd">
+<meta property="og:description" content="设计模式">
+<meta property="og:updated_time" content="2017-12-20T12:47:36.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="抽象工厂模式">
+<meta name="twitter:description" content="设计模式">
+
+
+  <link rel="alternative" href="/atom.xml" title="Ioopsd" type="application/atom+xml">
+
+
+
+  <link rel="icon" href="/favicon.png">
+
+
+<link rel="stylesheet" href="/perfect-scrollbar/css/perfect-scrollbar.min.css">
+<link rel="stylesheet" href="/styles/main.css">
+
+
+
+
+
+
+</head>
+<body
+  
+    class="monochrome"
+  
+  >
+  <div class="mobile-header">
+  <button class="sidebar-toggle" type="button">
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+  </button>
+  <a class="title" href="/">Ioopsd</a>
+</div>
+
+  <div class="main-container">
+    <div class="sidebar">
+    <img src="http://7xsn9b.com1.z0.glb.clouddn.com/p2020739931.webp" style="
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    ">
+  <div class="header">
+    
+    <div class="info">
+      <div class="content">
+        
+      </div>
+      
+        <div class="avatar">
+          
+            <a href="http://7xsn9b.com1.z0.glb.clouddn.com/p2412259139.webp"><img src="http://7xsn9b.com1.z0.glb.clouddn.com/p2412259139.webp"></a>
+          
+        </div>
+        <h1 class="title"><a href="/">Ioopsd</a></h1>
+      
+    </div>
+  </div>
+  <div class="body">
+    
+      
+        <ul class="nav">
+          
+            
+              <li>
+                <a href="https://github.com/chickencyj" >
+                  <img class="nav-img"  src="http://7xsn9b.com1.z0.glb.clouddn.com/GitHub-Mark-120px-plus.png">
+                </a>
+              </li>
+            
+          
+            
+              <li>
+                <a href="https://weibo.com/ioopsd" >
+                  <img class="nav-img"  src="http://7xsn9b.com1.z0.glb.clouddn.com/LOGO_64x64.png">
+                </a>
+              </li>
+            
+          
+            
+              <li>
+                <a href="https://music.163.com/#/user/home?id=53067068" >
+                  <img class="nav-img"  src="http://7xsn9b.com1.z0.glb.clouddn.com/yunMusic.png">
+                </a>
+              </li>
+            
+          
+        </ul>
+      
+    
+  </div>
+</div>
+
+    <div class="main-content">
+      
+        <div style="max-width: 1000px">
+      
+          <article id="post-2016-05-28-Factory3" class="article article-type-post">
+  
+    <h1 class="article-header">
+      抽象工厂模式
+    </h1>
+  
+  
+
+  <div class="article-info">
+    <span class="article-date">
+  2016-05-28
+</span>
+
+    
+	<span class="article-category tagcloud">
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/blog/">blog</a></li></ul>
+	</span>
+
+
+    
+	<span class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OOP/">OOP</a></li></ul>
+	</span>
+
+
+  </div>
+  <div class="article-entry">
+    <h1 id="抽象工厂模式"><a href="#抽象工厂模式" class="headerlink" title="抽象工厂模式"></a>抽象工厂模式</h1><ul>
+<li>这个模式分为抽象类与子类</li>
+<li>抽象类不实现具体功能，一般不用来创建具体对象，只定义必备的方法，如果在子类没有重写这些方法便抛出错误</li>
+<li>子类继承父类的方法</li>
+<li>该模式创建的结果不是一个真实对象的实例，而是一个类簇</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * [AbstractFactory description]</span><br><span class="line"> * @param &#123;[<span class="built_in">type</span>]&#125; subType   [description] 子类</span><br><span class="line"> * @param &#123;[<span class="built_in">type</span>]&#125; superType [description] 抽象类方法</span><br><span class="line"> */</span><br><span class="line">var AbstractFactory = <span class="keyword">function</span>(subType,superType)&#123;</span><br><span class="line">	//判断是否有此抽象类方法</span><br><span class="line">	<span class="keyword">if</span>(typeof AbstractFactory[superType] === <span class="string">'function'</span> )&#123;</span><br><span class="line">		<span class="keyword">function</span> <span class="function"><span class="title">F</span></span>()&#123;&#125;</span><br><span class="line">		F.prototype = new AbstractFactory[superType]();</span><br><span class="line">		subType.prototype = new F();</span><br><span class="line">		subType.prototype.constructor = subType;</span><br><span class="line">	&#125;<span class="keyword">else</span> &#123;</span><br><span class="line">		throw new Error(<span class="string">'未创建该抽象类'</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">//rpg</span><br><span class="line">AbstractFactory.ARTS = <span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">	this.type = <span class="string">'ARTS'</span>;</span><br><span class="line">&#125;;</span><br><span class="line">AbstractFactory.ARTS.prototype = &#123;</span><br><span class="line">	getNumber : <span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">		<span class="built_in">return</span> new Error(<span class="string">'抽象类不可调用'</span>);</span><br><span class="line">	&#125;,</span><br><span class="line">	getScore : <span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">		<span class="built_in">return</span> new Error(<span class="string">'抽象类不可调用'</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line">//FPS</span><br><span class="line">AbstractFactory.FPS = <span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">	this.type = <span class="string">'FPS'</span>;</span><br><span class="line">&#125;;</span><br><span class="line">AbstractFactory.FPS.prototype = &#123;</span><br><span class="line">	getNumber : <span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">		<span class="built_in">return</span> new Error(<span class="string">'抽象类不可调用'</span>);</span><br><span class="line">	&#125;,</span><br><span class="line">	getScore : <span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">		<span class="built_in">return</span> new Error(<span class="string">'抽象类不可调用'</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">//Dota2子类</span><br><span class="line">var Dota2 = <span class="keyword">function</span>(number,score)&#123;</span><br><span class="line">	this.number = number;</span><br><span class="line">	this.score = score;</span><br><span class="line">&#125;</span><br><span class="line">AbstractFactory(Dota2,<span class="string">'ARTS'</span>);</span><br><span class="line">Dota2.prototype.getNumber = <span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">	<span class="built_in">return</span> this.number;</span><br><span class="line">&#125;</span><br><span class="line">Dota2.prototype.getScore = <span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">	<span class="built_in">return</span> this.score;</span><br><span class="line">&#125;</span><br><span class="line">//CSGO子类</span><br><span class="line">var Csgo = <span class="keyword">function</span>(number,score)&#123;</span><br><span class="line">	this.number = number;</span><br><span class="line">	this.score = score;</span><br><span class="line">&#125;</span><br><span class="line">AbstractFactory(Csgo,<span class="string">'FPS'</span>);</span><br><span class="line">Csgo.prototype.getNumber = <span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">	<span class="built_in">return</span> this.number;</span><br><span class="line">&#125;</span><br><span class="line">Csgo.prototype.getScore = <span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">	<span class="built_in">return</span> this.score;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">var dota2 = new Dota2(1000000,100);</span><br><span class="line">console.log(dota2.getNumber());</span><br><span class="line">console.log(dota2.getScore());</span><br></pre></td></tr></table></figure>
+  </div>
+  <footer class="article-footer">
+    
+  <div class="cc">
+    <a href="http://creativecommons.org/licenses/by-sa/4.0/deed.en" target="_blank" title="署名-相同方式共享">
+      <img src="/images/cc/cc.png">
+      
+          <img src="/images/cc/by.png">
+        
+          <img src="/images/cc/sa.png">
+      
+      <span>
+        本作品采用知识共享 署名-相同方式共享 4.0 国际许可协议进行许可。
+      </span>
+    </a>
+  </div>
+
+
+    
+
+  </footer>
+</article>
+
+
+
+
+
+
+
+          <div class="main-footer">
+  
+    © 2017 Ioopsd - Powered by <a href="http://hexo.io" target="_blank">Hexo</a>
+  
+</div>
+
+      
+        </div>
+      
+    </div>
+  </div>
+  <script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+
+  <link rel="stylesheet" href="/PhotoSwipe/photoswipe.css">
+  <link rel="stylesheet" href="/PhotoSwipe/default-skin/default-skin.css">
+
+  <!-- Root element of PhotoSwipe. Must have class pswp. -->
+  <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe.
+             It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+      <!-- Container that holds slides.
+                PhotoSwipe keeps only 3 of them in the DOM to save memory.
+                Don't modify these 3 pswp__item elements, data is added later on. -->
+      <div class="pswp__container">
+        <div class="pswp__item"></div>
+        <div class="pswp__item"></div>
+        <div class="pswp__item"></div>
+      </div>
+
+      <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+      <div class="pswp__ui pswp__ui--hidden">
+
+        <div class="pswp__top-bar">
+
+          <!--  Controls are self-explanatory. Order can be changed. -->
+
+          <div class="pswp__counter"></div>
+
+          <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+          <button class="pswp__button pswp__button--share" title="Share"></button>
+
+          <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+          <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+          <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+          <!-- element will get class pswp__preloader--active when preloader is running -->
+          <div class="pswp__preloader">
+            <div class="pswp__preloader__icn">
+              <div class="pswp__preloader__cut">
+                <div class="pswp__preloader__donut"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+          <div class="pswp__share-tooltip"></div>
+        </div>
+
+        <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+
+        <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+
+        <div class="pswp__caption">
+          <div class="pswp__caption__center"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/PhotoSwipe/photoswipe.js"></script>
+  <script src="/PhotoSwipe/photoswipe-ui-default.js"></script>
+
+
+<script src="/perfect-scrollbar/js/min/perfect-scrollbar.min.js"></script>
+<script src="/scripts/main.js"></script>
+
+</body>
+</html>

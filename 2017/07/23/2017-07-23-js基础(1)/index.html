@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+<title>
+  
+    js基础(1)
+  
+</title>
+
+<meta name="description" content="js基础">
+<meta name="keywords" content="js基础">
+<meta property="og:type" content="article">
+<meta property="og:title" content="js基础(1)">
+<meta property="og:url" content="http://ioopsd.cn/2017/07/23/2017-07-23-js基础(1)/index.html">
+<meta property="og:site_name" content="Ioopsd">
+<meta property="og:description" content="js基础">
+<meta property="og:updated_time" content="2017-12-20T12:47:36.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="js基础(1)">
+<meta name="twitter:description" content="js基础">
+
+
+  <link rel="alternative" href="/atom.xml" title="Ioopsd" type="application/atom+xml">
+
+
+
+  <link rel="icon" href="/favicon.png">
+
+
+<link rel="stylesheet" href="/perfect-scrollbar/css/perfect-scrollbar.min.css">
+<link rel="stylesheet" href="/styles/main.css">
+
+
+
+
+
+
+</head>
+<body
+  
+    class="monochrome"
+  
+  >
+  <div class="mobile-header">
+  <button class="sidebar-toggle" type="button">
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+  </button>
+  <a class="title" href="/">Ioopsd</a>
+</div>
+
+  <div class="main-container">
+    <div class="sidebar">
+    <img src="http://7xsn9b.com1.z0.glb.clouddn.com/p2020739931.webp" style="
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    ">
+  <div class="header">
+    
+    <div class="info">
+      <div class="content">
+        
+      </div>
+      
+        <div class="avatar">
+          
+            <a href="http://7xsn9b.com1.z0.glb.clouddn.com/p2412259139.webp"><img src="http://7xsn9b.com1.z0.glb.clouddn.com/p2412259139.webp"></a>
+          
+        </div>
+        <h1 class="title"><a href="/">Ioopsd</a></h1>
+      
+    </div>
+  </div>
+  <div class="body">
+    
+      
+        <ul class="nav">
+          
+            
+              <li>
+                <a href="https://github.com/chickencyj" >
+                  <img class="nav-img"  src="http://7xsn9b.com1.z0.glb.clouddn.com/GitHub-Mark-120px-plus.png">
+                </a>
+              </li>
+            
+          
+            
+              <li>
+                <a href="https://weibo.com/ioopsd" >
+                  <img class="nav-img"  src="http://7xsn9b.com1.z0.glb.clouddn.com/LOGO_64x64.png">
+                </a>
+              </li>
+            
+          
+            
+              <li>
+                <a href="https://music.163.com/#/user/home?id=53067068" >
+                  <img class="nav-img"  src="http://7xsn9b.com1.z0.glb.clouddn.com/yunMusic.png">
+                </a>
+              </li>
+            
+          
+        </ul>
+      
+    
+  </div>
+</div>
+
+    <div class="main-content">
+      
+        <div style="max-width: 1000px">
+      
+          <article id="post-2017-07-23-js基础(1)" class="article article-type-post">
+  
+    <h1 class="article-header">
+      js基础(1)
+    </h1>
+  
+  
+
+  <div class="article-info">
+    <span class="article-date">
+  2017-07-23
+</span>
+
+    
+	<span class="article-category tagcloud">
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/blog/">blog</a></li></ul>
+	</span>
+
+
+    
+	<span class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js基础/">js基础</a></li></ul>
+	</span>
+
+
+  </div>
+  <div class="article-entry">
+    <h3 id="difference-between-“var”-and-“let”-keywords？"><a href="#difference-between-“var”-and-“let”-keywords？" class="headerlink" title="difference between “var” and “let” keywords？"></a>difference between “var” and “let” keywords？</h3><ul>
+<li>let 是ES2015 才被引入，var是js一开始就有的</li>
+<li>let声明的变量有块级作用域(变量生命周期在块执行完后销毁。。。我猜的)，而var声明的只有函数作用域</li>
+<li>var的变量提升(预解析)</li>
+</ul>
+<h3 id="difference-between-“-”-and-“-”-？"><a href="#difference-between-“-”-and-“-”-？" class="headerlink" title="difference between “==” and “===” ？"></a>difference between “==” and “===” ？</h3><ul>
+<li>== 只比较值， === 不仅比较值而且比较类型</li>
+<li>在使用==时，如果两边类型不一致，会先把右边的值隐式转换为左边的类型然后再进行比较</li>
+</ul>
+<h3 id="difference-between-“let”-and-“const”-keywords-？"><a href="#difference-between-“let”-and-“const”-keywords-？" class="headerlink" title="difference between “let” and “const” keywords ？"></a>difference between “let” and “const” keywords ？</h3><ul>
+<li>const 声明后要立刻赋值</li>
+<li>const不能重新赋值(对于引用类型来说是不能改变它的引用，所以一般我们在声明引用类型的时候要用const，不易出错)</li>
+</ul>
+<h3 id="difference-between-“null”-and-“undefined”-？"><a href="#difference-between-“null”-and-“undefined”-？" class="headerlink" title="difference between “null” and “undefined” ？"></a>difference between “null” and “undefined” ？</h3><ul>
+<li>都表示空值，undefined通常指声明一个变量不赋值js会自动为这个变量赋一个undefined，但当你想清除一个变量，通常的做法都是把它赋为null</li>
+<li>typeof undefined === “undefined”, typeof null === “object”</li>
+</ul>
+<h3 id="use-of-Arrow-function"><a href="#use-of-Arrow-function" class="headerlink" title="use of Arrow function"></a>use of Arrow function</h3><ul>
+<li>this 的指向通常有4种情况，但当this在箭头函数内，this是在定义的时候就已经确定为父作用域的this(也可以说是上下文或此法作用域)</li>
+</ul>
+<h3 id="waht-is-prototypal-inheritance"><a href="#waht-is-prototypal-inheritance" class="headerlink" title="waht is prototypal inheritance?"></a>waht is prototypal inheritance?</h3><ul>
+<li><p>通常来说每个object都有一个叫<strong>proto</strong>的属性，每个function都有一个叫prototype的属性，每一个对象的<strong>proto</strong>都等于创建这个对象的构造函数的prototype。而原型链就是这样一层层继承而来,到最顶层Object.prototype.<strong>proto</strong> === null<br>for example：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const A = function()&#123;&#125;</span><br><span class="line">const a = new A()</span><br><span class="line">a.__proto__ === A.prototype</span><br><span class="line">a.__proto__.__proto__ === Object.prototype</span><br><span class="line">a.__proto__.__proto__.__proto__ === null</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>题外话</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// Object 是谁创建的 ？ 当然是Function啦，Object是对象吗？明显是，所以也有__proto__属性</span><br><span class="line">Object.__proto__ === Function.prototype</span><br><span class="line">// Function是谁创建的？ Function 它自己，因为它自己也是函数。。。(黑人问号脸)</span><br><span class="line">Function.__proto__ === Function.prototype</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="difference-between-function-declearation-amp-function-expression"><a href="#difference-between-function-declearation-amp-function-expression" class="headerlink" title="difference between function declearation &amp; function expression?"></a>difference between function declearation &amp; function expression?</h3><ul>
+<li>函数声明会声明提升，函数表达式不会(用var只是变量声明提升，同时值为undefined，如果在声明前使用)</li>
+</ul>
+<h3 id="what-is-a-closure-and-how-do-you-use-it"><a href="#what-is-a-closure-and-how-do-you-use-it" class="headerlink" title="what is a closure and how do you use it?"></a>what is a closure and how do you use it?</h3><ul>
+<li>当前函数返回另一个函数，而且返回的函数在使用当前函数作用域的变量，而当返回函数执行完毕时，它并不会被GC回收因为它引用了另外一个作用域的变量，因此它的生命周期取决于引用的变量的生命周期</li>
+</ul>
+
+  </div>
+  <footer class="article-footer">
+    
+  <div class="cc">
+    <a href="http://creativecommons.org/licenses/by-sa/4.0/deed.en" target="_blank" title="署名-相同方式共享">
+      <img src="/images/cc/cc.png">
+      
+          <img src="/images/cc/by.png">
+        
+          <img src="/images/cc/sa.png">
+      
+      <span>
+        本作品采用知识共享 署名-相同方式共享 4.0 国际许可协议进行许可。
+      </span>
+    </a>
+  </div>
+
+
+    
+
+  </footer>
+</article>
+
+
+
+
+
+
+
+          <div class="main-footer">
+  
+    © 2017 Ioopsd - Powered by <a href="http://hexo.io" target="_blank">Hexo</a>
+  
+</div>
+
+      
+        </div>
+      
+    </div>
+  </div>
+  <script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+
+  <link rel="stylesheet" href="/PhotoSwipe/photoswipe.css">
+  <link rel="stylesheet" href="/PhotoSwipe/default-skin/default-skin.css">
+
+  <!-- Root element of PhotoSwipe. Must have class pswp. -->
+  <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe.
+             It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+      <!-- Container that holds slides.
+                PhotoSwipe keeps only 3 of them in the DOM to save memory.
+                Don't modify these 3 pswp__item elements, data is added later on. -->
+      <div class="pswp__container">
+        <div class="pswp__item"></div>
+        <div class="pswp__item"></div>
+        <div class="pswp__item"></div>
+      </div>
+
+      <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+      <div class="pswp__ui pswp__ui--hidden">
+
+        <div class="pswp__top-bar">
+
+          <!--  Controls are self-explanatory. Order can be changed. -->
+
+          <div class="pswp__counter"></div>
+
+          <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+          <button class="pswp__button pswp__button--share" title="Share"></button>
+
+          <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+          <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+          <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+          <!-- element will get class pswp__preloader--active when preloader is running -->
+          <div class="pswp__preloader">
+            <div class="pswp__preloader__icn">
+              <div class="pswp__preloader__cut">
+                <div class="pswp__preloader__donut"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+          <div class="pswp__share-tooltip"></div>
+        </div>
+
+        <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+
+        <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+
+        <div class="pswp__caption">
+          <div class="pswp__caption__center"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/PhotoSwipe/photoswipe.js"></script>
+  <script src="/PhotoSwipe/photoswipe-ui-default.js"></script>
+
+
+<script src="/perfect-scrollbar/js/min/perfect-scrollbar.min.js"></script>
+<script src="/scripts/main.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+<title>
+  
+    标签: OOP
+  
+</title>
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Ioopsd">
+<meta property="og:url" content="http://ioopsd.cn/tags/OOP/index.html">
+<meta property="og:site_name" content="Ioopsd">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Ioopsd">
+
+
+  <link rel="alternative" href="/atom.xml" title="Ioopsd" type="application/atom+xml">
+
+
+
+  <link rel="icon" href="/favicon.png">
+
+
+<link rel="stylesheet" href="/perfect-scrollbar/css/perfect-scrollbar.min.css">
+<link rel="stylesheet" href="/styles/main.css">
+
+
+
+
+
+
+</head>
+<body
+  
+    class="monochrome"
+  
+  >
+  <div class="mobile-header">
+  <button class="sidebar-toggle" type="button">
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+  </button>
+  <a class="title" href="/">Ioopsd</a>
+</div>
+
+  <div class="main-container">
+    <div class="sidebar">
+    <img src="http://7xsn9b.com1.z0.glb.clouddn.com/p2020739931.webp" style="
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    ">
+  <div class="header">
+    
+    <div class="info">
+      <div class="content">
+        
+      </div>
+      
+        <div class="avatar">
+          
+            <a href="http://7xsn9b.com1.z0.glb.clouddn.com/p2412259139.webp"><img src="http://7xsn9b.com1.z0.glb.clouddn.com/p2412259139.webp"></a>
+          
+        </div>
+        <h1 class="title"><a href="/">Ioopsd</a></h1>
+      
+    </div>
+  </div>
+  <div class="body">
+    
+      
+        <ul class="nav">
+          
+            
+              <li>
+                <a href="https://github.com/chickencyj" >
+                  <img class="nav-img"  src="http://7xsn9b.com1.z0.glb.clouddn.com/GitHub-Mark-120px-plus.png">
+                </a>
+              </li>
+            
+          
+            
+              <li>
+                <a href="https://weibo.com/ioopsd" >
+                  <img class="nav-img"  src="http://7xsn9b.com1.z0.glb.clouddn.com/LOGO_64x64.png">
+                </a>
+              </li>
+            
+          
+            
+              <li>
+                <a href="https://music.163.com/#/user/home?id=53067068" >
+                  <img class="nav-img"  src="http://7xsn9b.com1.z0.glb.clouddn.com/yunMusic.png">
+                </a>
+              </li>
+            
+          
+        </ul>
+      
+    
+  </div>
+</div>
+
+    <div class="main-content">
+      
+        <div style="max-width: 1000px">
+      
+          <h1>OOP</h1>
+
+
+  
+  
+    <div class="post-list">
+  
+
+    <div class="post-list-item article">
+      <h3 class="article-header">
+        <a href="/2016/05/29/2016-05-29-Builder/" >
+  建造者模式
+</a>
+
+      </h3>
+      
+
+      <div class="article-info">
+        <a href="/2016/05/29/2016-05-29-Builder/"><span class="article-date">
+  2016-05-29
+</span>
+</a>
+        
+	<span class="article-category tagcloud">
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/blog/">blog</a></li></ul>
+	</span>
+
+
+        
+	<span class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OOP/">OOP</a></li></ul>
+	</span>
+
+
+      </div>
+      <div class="article-entry">
+        
+          <h1 id="建造者模式"><a href="#建造者模式" class="headerlink" title="建造者模式"></a>建造者模式</h1><ul>
+<li>专注于创建的过程</li>
+<li>比如创建一个人的时候，不仅仅创建一个人的实例，这个人的每个属性，例如男女、兴趣爱好都是一个实例</li>
+<li>这种方式创建的每一个类都可以灵活运用以及复用，但这增加了结构的复杂些，如果每个模块类的复用率低而且变动不大，最好还是采取创建整体对象</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line">var Human = <span class="keyword">function</span>(param)&#123;</span><br><span class="line">    this.skill = param &amp;&amp; param.skill || <span class="string">'保密'</span>;</span><br><span class="line">    this.hobby = param &amp;&amp; param.hobby || <span class="string">'保密'</span>;</span><br><span class="line">&#125;</span><br><span class="line">Human.prototype = &#123;</span><br><span class="line">    getSkill : <span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">        <span class="built_in">return</span> this.skill;</span><br><span class="line">    &#125;,</span><br><span class="line">    getHobby : <span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">        <span class="built_in">return</span> this.hobby;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var Named = <span class="keyword">function</span>(name)&#123;</span><br><span class="line">    var that = this;</span><br><span class="line">    this.name = name;</span><br><span class="line">    !<span class="keyword">function</span>(name,that)&#123;</span><br><span class="line">        <span class="keyword">if</span>(name.indexOf(<span class="string">' '</span>) !== -1)&#123;</span><br><span class="line">            that.firstName = name.slice(0,name.indexOf(<span class="string">' '</span>));</span><br><span class="line">            that.secondName = name.slice(name.indexOf(<span class="string">' '</span>));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;(name,that);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var Work = <span class="keyword">function</span>(work)&#123;</span><br><span class="line">    var that = this;</span><br><span class="line">    !<span class="keyword">function</span>(work,that)&#123;</span><br><span class="line">        switch(work)&#123;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">'code'</span> :</span><br><span class="line">                that.work = <span class="string">'工程师'</span>;</span><br><span class="line">                that.workDescript = <span class="string">'coding'</span>;</span><br><span class="line">                <span class="built_in">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="string">'game'</span> :</span><br><span class="line">                that.work = <span class="string">'play'</span>;</span><br><span class="line">                that.workDescript = <span class="string">'doat2'</span>;</span><br><span class="line">                <span class="built_in">break</span>;</span><br><span class="line">            default : </span><br><span class="line">                that.work = work;</span><br><span class="line">                that.workDescript = <span class="string">'sorry,...'</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;(work,that);</span><br><span class="line">&#125;</span><br><span class="line">Work.prototype = &#123;</span><br><span class="line">    constructor : Work,</span><br><span class="line">    changeWork : <span class="keyword">function</span>(work)&#123;</span><br><span class="line">        this.work = work;</span><br><span class="line">    &#125;,</span><br><span class="line">    changeDescript: <span class="keyword">function</span>(description)&#123;</span><br><span class="line">        this.workDescript = description;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">var Person = <span class="keyword">function</span>(name,work,param)&#123;</span><br><span class="line">    var _person = new Human(param);</span><br><span class="line">    _person.name = new Named(name);</span><br><span class="line">    _person.work = new Work(work);</span><br><span class="line">    <span class="built_in">return</span> _person;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var xiaobai = new Person(<span class="string">'xiao bai'</span>,<span class="string">'code'</span>);</span><br><span class="line">console.log(xiaobai.skill);</span><br><span class="line">console.log(xiaobai.name.firstName);</span><br><span class="line">console.log(xiaobai.work.work);</span><br><span class="line">console.log(xiaobai.work.workDescript);</span><br><span class="line">xiaobai.work.changeWork(<span class="string">'game'</span>);</span><br><span class="line">console.log(xiaobai.work.work);</span><br></pre></td></tr></table></figure>
+        
+      </div>
+    </div>
+
+  
+    </div>
+  
+
+  
+  
+    <div class="post-list">
+  
+
+    <div class="post-list-item article">
+      <h3 class="article-header">
+        <a href="/2016/05/28/2016-05-28-Factory3/" >
+  抽象工厂模式
+</a>
+
+      </h3>
+      
+
+      <div class="article-info">
+        <a href="/2016/05/28/2016-05-28-Factory3/"><span class="article-date">
+  2016-05-28
+</span>
+</a>
+        
+	<span class="article-category tagcloud">
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/blog/">blog</a></li></ul>
+	</span>
+
+
+        
+	<span class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OOP/">OOP</a></li></ul>
+	</span>
+
+
+      </div>
+      <div class="article-entry">
+        
+          <h1 id="抽象工厂模式"><a href="#抽象工厂模式" class="headerlink" title="抽象工厂模式"></a>抽象工厂模式</h1><ul>
+<li>这个模式分为抽象类与子类</li>
+<li>抽象类不实现具体功能，一般不用来创建具体对象，只定义必备的方法，如果在子类没有重写这些方法便抛出错误</li>
+<li>子类继承父类的方法</li>
+<li>该模式创建的结果不是一个真实对象的实例，而是一个类簇</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * [AbstractFactory description]</span><br><span class="line"> * @param &#123;[<span class="built_in">type</span>]&#125; subType   [description] 子类</span><br><span class="line"> * @param &#123;[<span class="built_in">type</span>]&#125; superType [description] 抽象类方法</span><br><span class="line"> */</span><br><span class="line">var AbstractFactory = <span class="keyword">function</span>(subType,superType)&#123;</span><br><span class="line">	//判断是否有此抽象类方法</span><br><span class="line">	<span class="keyword">if</span>(typeof AbstractFactory[superType] === <span class="string">'function'</span> )&#123;</span><br><span class="line">		<span class="keyword">function</span> <span class="function"><span class="title">F</span></span>()&#123;&#125;</span><br><span class="line">		F.prototype = new AbstractFactory[superType]();</span><br><span class="line">		subType.prototype = new F();</span><br><span class="line">		subType.prototype.constructor = subType;</span><br><span class="line">	&#125;<span class="keyword">else</span> &#123;</span><br><span class="line">		throw new Error(<span class="string">'未创建该抽象类'</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">//rpg</span><br><span class="line">AbstractFactory.ARTS = <span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">	this.type = <span class="string">'ARTS'</span>;</span><br><span class="line">&#125;;</span><br><span class="line">AbstractFactory.ARTS.prototype = &#123;</span><br><span class="line">	getNumber : <span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">		<span class="built_in">return</span> new Error(<span class="string">'抽象类不可调用'</span>);</span><br><span class="line">	&#125;,</span><br><span class="line">	getScore : <span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">		<span class="built_in">return</span> new Error(<span class="string">'抽象类不可调用'</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line">//FPS</span><br><span class="line">AbstractFactory.FPS = <span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">	this.type = <span class="string">'FPS'</span>;</span><br><span class="line">&#125;;</span><br><span class="line">AbstractFactory.FPS.prototype = &#123;</span><br><span class="line">	getNumber : <span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">		<span class="built_in">return</span> new Error(<span class="string">'抽象类不可调用'</span>);</span><br><span class="line">	&#125;,</span><br><span class="line">	getScore : <span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">		<span class="built_in">return</span> new Error(<span class="string">'抽象类不可调用'</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">//Dota2子类</span><br><span class="line">var Dota2 = <span class="keyword">function</span>(number,score)&#123;</span><br><span class="line">	this.number = number;</span><br><span class="line">	this.score = score;</span><br><span class="line">&#125;</span><br><span class="line">AbstractFactory(Dota2,<span class="string">'ARTS'</span>);</span><br><span class="line">Dota2.prototype.getNumber = <span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">	<span class="built_in">return</span> this.number;</span><br><span class="line">&#125;</span><br><span class="line">Dota2.prototype.getScore = <span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">	<span class="built_in">return</span> this.score;</span><br><span class="line">&#125;</span><br><span class="line">//CSGO子类</span><br><span class="line">var Csgo = <span class="keyword">function</span>(number,score)&#123;</span><br><span class="line">	this.number = number;</span><br><span class="line">	this.score = score;</span><br><span class="line">&#125;</span><br><span class="line">AbstractFactory(Csgo,<span class="string">'FPS'</span>);</span><br><span class="line">Csgo.prototype.getNumber = <span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">	<span class="built_in">return</span> this.number;</span><br><span class="line">&#125;</span><br><span class="line">Csgo.prototype.getScore = <span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">	<span class="built_in">return</span> this.score;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">var dota2 = new Dota2(1000000,100);</span><br><span class="line">console.log(dota2.getNumber());</span><br><span class="line">console.log(dota2.getScore());</span><br></pre></td></tr></table></figure>
+        
+      </div>
+    </div>
+
+  
+    </div>
+  
+
+  
+  
+    <div class="post-list">
+  
+
+    <div class="post-list-item article">
+      <h3 class="article-header">
+        <a href="/2016/05/27/2016-05-27-Factory2/" >
+  安全工厂方法模式
+</a>
+
+      </h3>
+      
+
+      <div class="article-info">
+        <a href="/2016/05/27/2016-05-27-Factory2/"><span class="article-date">
+  2016-05-27
+</span>
+</a>
+        
+	<span class="article-category tagcloud">
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/blog/">blog</a></li></ul>
+	</span>
+
+
+        
+	<span class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OOP/">OOP</a></li></ul>
+	</span>
+
+
+      </div>
+      <div class="article-entry">
+        
+          <h1 id="安全工厂方法模式"><a href="#安全工厂方法模式" class="headerlink" title="安全工厂方法模式"></a>安全工厂方法模式</h1><ul>
+<li>将实际创建对象工作推迟到子类当中。这样核心类就成了抽象类</li>
+<li>同时为了避免在实例化的时候忘记通过new关键字来创建的话，还要考虑this的指向问题</li>
+<li>主要用于创建多类对象</li>
+<li>这种方式也避免了使用者与对象类之间的耦合，使用者不必关心是什么类，只需调用工厂方法即可</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">var Factory = <span class="keyword">function</span>(<span class="built_in">type</span>,content)&#123;</span><br><span class="line">	<span class="keyword">if</span> (this instanceof Factory) &#123;</span><br><span class="line">		<span class="built_in">return</span> new this[<span class="built_in">type</span>](content);</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="built_in">return</span> new Factory(<span class="built_in">type</span>,content);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Factory.prototype = &#123;</span><br><span class="line">	constructor : Factory,</span><br><span class="line">	CloseBtn: <span class="keyword">function</span>(content)&#123;&#125;,</span><br><span class="line">	SureBtn: <span class="keyword">function</span>(content)&#123;&#125;,</span><br><span class="line">	CancleBtn: <span class="keyword">function</span>(content)&#123;</span><br><span class="line">		this.content = content;</span><br><span class="line">		!<span class="keyword">function</span>(content)&#123;</span><br><span class="line">			var btn = document.createElement(<span class="string">'button'</span>);</span><br><span class="line">			btn.innerHTML = content;</span><br><span class="line">			btn.className = <span class="string">'CancleBtn'</span>;</span><br><span class="line">			document.getElementById(<span class="string">'container'</span>).appendChild(btn);</span><br><span class="line">		&#125;(content);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var date = [</span><br><span class="line">	&#123;<span class="built_in">type</span>:<span class="string">'CloseBtn'</span>,content:<span class="string">'关闭'</span>&#125;,</span><br><span class="line">	&#123;<span class="built_in">type</span>:<span class="string">'SureBtn'</span>,content:<span class="string">'确定'</span>&#125;,</span><br><span class="line">	&#123;<span class="built_in">type</span>:<span class="string">'CancleBtn'</span>,content:<span class="string">'取消'</span>&#125;</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (var i = 0; i &lt; date.length; i++) &#123;</span><br><span class="line">	Factory(date[i].<span class="built_in">type</span>,date[i].content);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+        
+      </div>
+    </div>
+
+  
+    </div>
+  
+
+  
+  
+    <div class="post-list">
+  
+
+    <div class="post-list-item article">
+      <h3 class="article-header">
+        <a href="/2016/05/26/2016-05-26-Fatory1/" >
+  简单工厂模式
+</a>
+
+      </h3>
+      
+
+      <div class="article-info">
+        <a href="/2016/05/26/2016-05-26-Fatory1/"><span class="article-date">
+  2016-05-26
+</span>
+</a>
+        
+	<span class="article-category tagcloud">
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/blog/">blog</a></li></ul>
+	</span>
+
+
+        
+	<span class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OOP/">OOP</a></li></ul>
+	</span>
+
+
+      </div>
+      <div class="article-entry">
+        
+          <h1 id="简单工厂模式"><a href="#简单工厂模式" class="headerlink" title="简单工厂模式"></a>简单工厂模式</h1><ul>
+<li>由一个工厂对象决定创建某一种产品对象类的实例。主要用来创建同一类对象</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">var LoginAlert = <span class="keyword">function</span>(context)&#123;</span><br><span class="line">	this.context = context;</span><br><span class="line">&#125;</span><br><span class="line">LoginAlert.prototype.show = <span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">	//显示Alert提示框</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var LoginConfirm = <span class="keyword">function</span>(context)&#123;</span><br><span class="line">	this.context = context;</span><br><span class="line">&#125;</span><br><span class="line">LoginConfirm.prototype.show = <span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">	//显示Confirm提示框</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var LoginPrompt = <span class="keyword">function</span>(context)&#123;</span><br><span class="line">	this.context = context;</span><br><span class="line">&#125;</span><br><span class="line">LoginPrompt.prototype.show = <span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">	//显示Prompt提示框</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var LoginFactory = <span class="keyword">function</span>(name)&#123;</span><br><span class="line">	swith(name)&#123;</span><br><span class="line">		<span class="keyword">case</span> <span class="string">'alert'</span>:</span><br><span class="line">			<span class="built_in">return</span> new LoginAlert();</span><br><span class="line">		<span class="keyword">case</span> <span class="string">'prompt'</span>:</span><br><span class="line">			<span class="built_in">return</span> new LoginPrompt();</span><br><span class="line">		<span class="keyword">case</span> <span class="string">'confirm'</span>:</span><br><span class="line">			<span class="built_in">return</span> new LoginConfirm();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//调用</span><br><span class="line">var loginalert = LoginFactory(<span class="string">'alert'</span>);</span><br><span class="line">loginalert.show();</span><br></pre></td></tr></table></figure>
+        
+      </div>
+    </div>
+
+  
+    </div>
+  
+
+  
+  
+    <div class="post-list">
+  
+
+    <div class="post-list-item article">
+      <h3 class="article-header">
+        <a href="/2016/05/25/2016-05-25-OOP/" >
+  javascript OOP中属性的隐藏和暴露
+</a>
+
+      </h3>
+      
+
+      <div class="article-info">
+        <a href="/2016/05/25/2016-05-25-OOP/"><span class="article-date">
+  2016-05-25
+</span>
+</a>
+        
+	<span class="article-category tagcloud">
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/blog/">blog</a></li></ul>
+	</span>
+
+
+        
+	<span class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OOP/">OOP</a></li></ul>
+	</span>
+
+
+      </div>
+      <div class="article-entry">
+        
+          <h1 id="下面用简短的例子来演示一下在JavaScript中如何实现面向对象中各种类型的属性和方法"><a href="#下面用简短的例子来演示一下在JavaScript中如何实现面向对象中各种类型的属性和方法" class="headerlink" title="下面用简短的例子来演示一下在JavaScript中如何实现面向对象中各种类型的属性和方法"></a>下面用简短的例子来演示一下在JavaScript中如何实现面向对象中各种类型的属性和方法</h1><ul>
+<li>由于JavaScript中没有如其他语言如Public Private 这些显性的存在,在JavaScript这些方法都是通过利用JavaScript的词法作用域的特征来实现的。</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">var People = <span class="keyword">function</span>(age,name)&#123;</span><br><span class="line">	//私有属性	函数外部无法访问 </span><br><span class="line">	var num = 1;</span><br><span class="line">	//私有方法	函数外部无法访问</span><br><span class="line">	var walk = <span class="function"><span class="title">function</span></span>()&#123;&#125;;</span><br><span class="line">	//公有属性	</span><br><span class="line">	this.age = age;</span><br><span class="line">	//公有方法</span><br><span class="line">	this.run = <span class="function"><span class="title">function</span></span>()&#123;&#125;;</span><br><span class="line">	//特权方法 可以访问到私有属性与方法</span><br><span class="line">	this.getName = <span class="function"><span class="title">function</span></span>()&#123;&#125;</span><br><span class="line">	//构造器</span><br><span class="line">	this.setName = <span class="keyword">function</span>(name)&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line">//静态属性 实例化对象无法访问</span><br><span class="line">People.isWorker = <span class="literal">true</span>;</span><br><span class="line">//静态方法 实例化对象无法访问</span><br><span class="line">People.getMoney = <span class="function"><span class="title">function</span></span>()&#123;&#125;;</span><br></pre></td></tr></table></figure>
+        
+      </div>
+    </div>
+
+  
+    </div>
+  
+
+
+
+
+
+
+          <div class="main-footer">
+  
+    © 2017 Ioopsd - Powered by <a href="http://hexo.io" target="_blank">Hexo</a>
+  
+</div>
+
+      
+        </div>
+      
+    </div>
+  </div>
+  <script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+
+  <link rel="stylesheet" href="/PhotoSwipe/photoswipe.css">
+  <link rel="stylesheet" href="/PhotoSwipe/default-skin/default-skin.css">
+
+  <!-- Root element of PhotoSwipe. Must have class pswp. -->
+  <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe.
+             It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+      <!-- Container that holds slides.
+                PhotoSwipe keeps only 3 of them in the DOM to save memory.
+                Don't modify these 3 pswp__item elements, data is added later on. -->
+      <div class="pswp__container">
+        <div class="pswp__item"></div>
+        <div class="pswp__item"></div>
+        <div class="pswp__item"></div>
+      </div>
+
+      <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+      <div class="pswp__ui pswp__ui--hidden">
+
+        <div class="pswp__top-bar">
+
+          <!--  Controls are self-explanatory. Order can be changed. -->
+
+          <div class="pswp__counter"></div>
+
+          <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+          <button class="pswp__button pswp__button--share" title="Share"></button>
+
+          <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+          <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+          <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+          <!-- element will get class pswp__preloader--active when preloader is running -->
+          <div class="pswp__preloader">
+            <div class="pswp__preloader__icn">
+              <div class="pswp__preloader__cut">
+                <div class="pswp__preloader__donut"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+          <div class="pswp__share-tooltip"></div>
+        </div>
+
+        <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+
+        <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+
+        <div class="pswp__caption">
+          <div class="pswp__caption__center"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/PhotoSwipe/photoswipe.js"></script>
+  <script src="/PhotoSwipe/photoswipe-ui-default.js"></script>
+
+
+<script src="/perfect-scrollbar/js/min/perfect-scrollbar.min.js"></script>
+<script src="/scripts/main.js"></script>
+
+</body>
+</html>
