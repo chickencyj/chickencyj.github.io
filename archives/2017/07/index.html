@@ -103,6 +103,14 @@
               </li>
             
           
+            
+              <li>
+                <a href="https://www.xiami.com/u/6821041" >
+                  <img class="nav-img"  src="http://7xsn9b.com1.z0.glb.clouddn.com/xiami.png">
+                </a>
+              </li>
+            
+          
         </ul>
       
     
@@ -125,69 +133,6 @@
           <h1><a href="/archives/2017" class="archive-year">2017</a></h1>
         </div>
         <div class="post-list">
-    
-  
-
-    <div class="post-list-item article">
-      <h3 class="article-header">
-        <a href="/2017/07/24/2017-07-24-nodejs(Console and DNS and Error)/" >
-  Console DNS and Error
-</a>
-
-      </h3>
-      
-
-      <div class="article-info">
-        <a href="/2017/07/24/2017-07-24-nodejs(Console and DNS and Error)/"><span class="article-date">
-  2017-07-24
-</span>
-</a>
-        
-	<span class="article-category tagcloud">
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/blog/">blog</a></li></ul>
-	</span>
-
-
-        
-	<span class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/node/">node</a></li></ul>
-	</span>
-
-
-      </div>
-      <div class="article-entry">
-        
-          <p>刚刚又看了下Console, DNS 和 Error, 遇到一些有趣的知识点，总结一下</p>
-<h3 id="Console"><a href="#Console" class="headerlink" title="Console"></a>Console</h3><ul>
-<li><p>nodejs默认情况下我们的console的输出会发送到 process.stdout 和 process.stderr，其实就是调用</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">new Console(process.stdout, process.stderr)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>new Console 接受两个两个可写流参数(stdout <writable>， stderr <writable>)，cosnole.log输出到stdout，console.error输出到stderr。我们可以自定义console，通过传入不同的流把console写到不同的地方</writable></writable></p>
-</li>
-<li>console 是异步还是同步，根据不同的操作系统以及传入的不同的可写流参数来区分<ul>
-<li>Files: 在Windows and Linux 都是同步的</li>
-<li>TTYs (Terminals): Windows 异步, Unix 同步</li>
-<li>Pipes (and sockets): Windows 同步, Unix </li>
-</ul>
-</li>
-</ul>
-<h3 id="DNS"><a href="#DNS" class="headerlink" title="DNS"></a>DNS</h3><ul>
-<li>DNS模块有两种函数都是用来域名解析 dns.lookup(‘xxxx’, callback) [使用底层操作系统工具进行域名解析] 以及 dns.resolve4(‘xxx’, callback) 或者 dns.resolve(‘xxx’, ‘A’, callback) [连接到一个真实的 DNS 服务器进行域名解析]</li>
-<li>dns.lookup 会同步的调用getaddrinfo(3),这可能会阻塞libuv线程池中其它的操作， 而dns.resolve通过网络执行异步IO来域名解析，没有阻塞其它操作的风险</li>
-</ul>
-<h3 id="Error"><a href="#Error" class="headerlink" title="Error"></a>Error</h3><ul>
-<li>JavaScript 的 throw 机制的任何使用都会引起异常，异常必须使用 try / catch 处理，否则 Node.js 进程会立即退出。</li>
-<li>而try / catch 不能用于捕获由异步 API 引起的错误，因为当回调被调用时，try/catch 早已执行完被回收了。这种情况我们可以用process.on(‘uncaughtException’， callback)来监听和在callback处理没有被捕捉到的异常</li>
-</ul>
-
-        
-      </div>
-    </div>
-
-  
-
-  
-  
     
   
 
@@ -243,6 +188,69 @@
 <li>是否在文件模块缓存区中</li>
 <li>是否原生模块 =&gt; 否 =&gt; 查找文件模块</li>
 <li>是否原生模块 =&gt; 是 =&gt; 是否在原生模块缓存区中 =&gt; 否 =&gt; 加载原生模块</li>
+</ul>
+
+        
+      </div>
+    </div>
+
+  
+
+  
+  
+    
+  
+
+    <div class="post-list-item article">
+      <h3 class="article-header">
+        <a href="/2017/07/24/2017-07-24-nodejs(Console and DNS and Error)/" >
+  Console DNS and Error
+</a>
+
+      </h3>
+      
+
+      <div class="article-info">
+        <a href="/2017/07/24/2017-07-24-nodejs(Console and DNS and Error)/"><span class="article-date">
+  2017-07-24
+</span>
+</a>
+        
+	<span class="article-category tagcloud">
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/blog/">blog</a></li></ul>
+	</span>
+
+
+        
+	<span class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/node/">node</a></li></ul>
+	</span>
+
+
+      </div>
+      <div class="article-entry">
+        
+          <p>刚刚又看了下Console, DNS 和 Error, 遇到一些有趣的知识点，总结一下</p>
+<h3 id="Console"><a href="#Console" class="headerlink" title="Console"></a>Console</h3><ul>
+<li><p>nodejs默认情况下我们的console的输出会发送到 process.stdout 和 process.stderr，其实就是调用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">new Console(process.stdout, process.stderr)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>new Console 接受两个两个可写流参数(stdout <writable>， stderr <writable>)，cosnole.log输出到stdout，console.error输出到stderr。我们可以自定义console，通过传入不同的流把console写到不同的地方</writable></writable></p>
+</li>
+<li>console 是异步还是同步，根据不同的操作系统以及传入的不同的可写流参数来区分<ul>
+<li>Files: 在Windows and Linux 都是同步的</li>
+<li>TTYs (Terminals): Windows 异步, Unix 同步</li>
+<li>Pipes (and sockets): Windows 同步, Unix </li>
+</ul>
+</li>
+</ul>
+<h3 id="DNS"><a href="#DNS" class="headerlink" title="DNS"></a>DNS</h3><ul>
+<li>DNS模块有两种函数都是用来域名解析 dns.lookup(‘xxxx’, callback) [使用底层操作系统工具进行域名解析] 以及 dns.resolve4(‘xxx’, callback) 或者 dns.resolve(‘xxx’, ‘A’, callback) [连接到一个真实的 DNS 服务器进行域名解析]</li>
+<li>dns.lookup 会同步的调用getaddrinfo(3),这可能会阻塞libuv线程池中其它的操作， 而dns.resolve通过网络执行异步IO来域名解析，没有阻塞其它操作的风险</li>
+</ul>
+<h3 id="Error"><a href="#Error" class="headerlink" title="Error"></a>Error</h3><ul>
+<li>JavaScript 的 throw 机制的任何使用都会引起异常，异常必须使用 try / catch 处理，否则 Node.js 进程会立即退出。</li>
+<li>而try / catch 不能用于捕获由异步 API 引起的错误，因为当回调被调用时，try/catch 早已执行完被回收了。这种情况我们可以用process.on(‘uncaughtException’， callback)来监听和在callback处理没有被捕捉到的异常</li>
 </ul>
 
         
@@ -333,7 +341,7 @@
 
           <div class="main-footer">
   
-    © 2017 Ioopsd - Powered by <a href="http://hexo.io" target="_blank">Hexo</a>
+    © 2018 Ioopsd - Powered by <a href="http://hexo.io" target="_blank">Hexo</a>
   
 </div>
 
